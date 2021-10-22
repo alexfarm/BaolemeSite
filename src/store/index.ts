@@ -1,5 +1,4 @@
 import React from 'react';
-import User from './User';
 import Shop from './Shop';
 import Advertisement from './Advertisement';
 
@@ -11,7 +10,6 @@ class RootStore {
     adStore: any;
 
     constructor() {
-        this.userStore = new User();
         this.shopStore = new Shop();
         this.adStore = new Advertisement();
     }
