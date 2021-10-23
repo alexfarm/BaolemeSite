@@ -28,7 +28,7 @@ const Banner: React.FC = () => {
                                     Toast.show(`你点击了卡片 ${index + 1}`);
                                 }}
                             >
-                                {ad.name}
+                                {ad.description}
                             </div>
                         </Swiper.Item>
                     ))

@@ -2,11 +2,12 @@ const {
     SERVER_ADDRESS
 } = ENV_CONFIG;
 
-const API = {
+const API: any = {
     AD_ADD: 'ad/all',
     SHOP_LIST_ALL: 'shop/all/',
     SHOP_SEARCH: 'shop/seach',
-    SHOP_GET_BY_ID: 'shop/getById'
+    SHOP_GET_BY_ID: 'shop/getById',
+    AD_LIST_ALL: 'advertisement/all/'
 };
 
 Object.keys(API).forEach((apiName) => {
@@ -15,6 +16,4 @@ Object.keys(API).forEach((apiName) => {
 
 Object.freeze(API);
 
-export default {
-    API
-};
+export default API;

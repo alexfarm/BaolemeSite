@@ -2,12 +2,15 @@ import {
     observable, flow, action, makeObservable, computed
 } from 'mobx';
 import CommonObject from './base/CommonObject';
+import API from '../constant/API';
+import { get, post } from '../util/request';
 
 export interface IAD {
     id: number,
-    name: string,
-    img?: string,
-    link: string
+    description: string,
+    img: string,
+    rank: string,
+    type: string
 }
 
 export default class AD extends CommonObject<IAD> {
@@ -49,17 +52,6 @@ export default class AD extends CommonObject<IAD> {
 
     @action.bound
     getAll = async () => {
-        this.list = [
-            {
-                id: 1,
-                name: '饮料优惠推荐',
-                link: ''
-            },
-            {
-                id: 2,
-                name: '精选火锅',
-                link: ''
-            }
-        ];
+        this.list = await get(API.AD_LIST_ALL);
     }
 }

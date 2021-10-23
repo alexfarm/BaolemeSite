@@ -56,7 +56,7 @@ export function get<T>(
     params?: AxiosRequestConfig
 ): Promise<T> {
     return request<T>({
-        method: METHOD.POST,
+        method: METHOD.GET,
         headers: {},
         url,
         ...params
