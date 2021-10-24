@@ -5,20 +5,18 @@ import CommonObject from './base/CommonObject';
 import API from '../constant/API';
 import { get, post } from '../util/request';
 
-export interface IAD {
-    id: number,
-    description: string,
-    img: string,
-    rank: string,
-    type: string
+export interface AdSwiperList {
+    type: string;
 }
 
-export default class AD extends CommonObject<IAD> {
+export default class AD extends CommonObject<AdSwiperList> {
     constructor() {
         super();
         makeObservable(this);
         this.getAll();
     }
+
+    @observable adList: AdSwiperList[] = [];
 
     @action.bound
     initSocket(window:Window) {
@@ -52,6 +50,6 @@ export default class AD extends CommonObject<IAD> {
 
     @action.bound
     getAll = async () => {
-        this.list = await get(API.AD_LIST_ALL);
+        this.adList = await get(API.AD_LIST_ALL);
     }
 }

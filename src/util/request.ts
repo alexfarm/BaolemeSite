@@ -3,6 +3,7 @@ import axios, {
 } from 'axios';
 import { message } from 'antd';
 import qs from 'qs';
+import { v4 as uuid } from 'uuid';
 import { METHOD } from '../constant/http';
 
 message.config({
@@ -10,6 +11,7 @@ message.config({
     duration: 5,
     maxCount: 3
 });
+const userFlag = uuid();
 
 export interface IResponse<T = any> {
     respCode: string;
@@ -57,7 +59,9 @@ export function get<T>(
 ): Promise<T> {
     return request<T>({
         method: METHOD.GET,
-        headers: {},
+        headers: {
+            'X-USER-FLAG': userFlag
+        },
         url,
         ...params
     }, setLoading);
