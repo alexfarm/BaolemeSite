@@ -3,19 +3,18 @@ import {
 } from 'mobx';
 import CommonObject from './base/CommonObject';
 
-export interface IAD {
-    id: number,
-    name: string,
-    img?: string,
-    link: string
+export interface AdSwiperList {
+    type: string;
 }
 
-export default class AD extends CommonObject<IAD> {
+export default class AD extends CommonObject<AdSwiperList> {
     constructor() {
         super();
         makeObservable(this);
         this.getAll();
     }
+
+    @observable adList: AdSwiperList[] = [];
 
     @action.bound
     initSocket(window:Window) {
@@ -49,16 +48,18 @@ export default class AD extends CommonObject<IAD> {
 
     @action.bound
     getAll = async () => {
-        this.list = [
+        this.adList = [
             {
-                id: 1,
-                name: '饮料优惠推荐',
-                link: ''
+                type: 'coffee'
             },
             {
-                id: 2,
-                name: '精选火锅',
-                link: ''
+                type: 'eat',
+            },
+            {
+                type: 'movie'
+            },
+            {
+                type: 'shop'
             }
         ];
     }

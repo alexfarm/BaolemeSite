@@ -7,10 +7,12 @@
 }
 
 .content {
-    padding: 0 12px;
+    padding-left: 12px;
     display: flex;
     flex-direction: column;
-    flex-grow:1
+    flex-grow:1;
+    width: 260px;
+    box-sizing: border-box;
 }
 
 .header {
@@ -31,4 +33,13 @@
 .categray {
     font-size: 10px;
     opacity: 0.5;
+    display: flex;
+}
+
+.site {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: break-all;
+    max-width: 225px;
 }
