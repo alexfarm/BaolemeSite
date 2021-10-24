@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Image, Card, Rate } from 'antd-mobile';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';
-import { LeftOutline, EnvironmentOutline } from 'antd-mobile-icons';
+import { EnvironmentOutline } from 'antd-mobile-icons';
 import styles from './List.less';
 import { IShop } from '../../store/Shop';
 
@@ -28,12 +28,7 @@ const MList: React.FC<Iprops> = (prosp) => {
                         className={styles.card}
                         bodyClassName={styles.cardBody}
                         onClick={() => {
-                            history.push({
-                                pathname: `detail/${item.id}`,
-                                state: {
-                                    detail: item
-                                }
-                            });
+                            history.push(`detail/${item.id}`);
                         }}
                     >
                         <Image

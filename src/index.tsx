@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
+import 'antd-mobile/es/global';
 import Layout from './pages/layout';
 import { stores } from './store';
 import './index.less';

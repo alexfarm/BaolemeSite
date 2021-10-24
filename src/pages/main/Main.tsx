@@ -1,18 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Search, Space, Button,Image } from 'antd-mobile';
 import { observer } from 'mobx-react';
-import { toJS } from 'mobx';
 import { useHistory } from 'react-router';
-import { AppContext } from '../../store';
-import { DownFill } from 'antd-mobile-icons'
+import { DownFill } from 'antd-mobile-icons';
+import { SearchRef } from 'antd-mobile/es/components/search';
 import Banner from '../banner';
-import List from '../list';
 import iconPng from './images/icon.png';
 import moneyPng from './images/money.png';
 import styles from './Main.less';
 
+
 const Main: React.FC = () => {
     const history = useHistory();
+    const searchRef = useRef<SearchRef>(null)
 
     useEffect(() => {
         console.log('main page init');
@@ -23,7 +23,7 @@ const Main: React.FC = () => {
             <div
                 className={styles.header}
             >
-                <div style={{fontSize: 16}}>上海 <DownFill fontSize={12}/></div>
+                <div style={{fontSize: 16, marginRight: 12}}>上海 <DownFill fontSize={12}/></div>
                 <div
                     className={styles.search}
                     onClick={() => {
@@ -31,6 +31,7 @@ const Main: React.FC = () => {
                     }}
                 >
                     <Search
+                        ref={searchRef}
                         placeholder="请输入您感兴趣的内容"
                         value=""
                         onFocus={() => {

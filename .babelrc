@@ -36,9 +36,9 @@
     [
       "babel-plugin-import",
       {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
-        "style": true
+        "libraryName": "antd-mobile",
+        "libraryDirectory": "es/components",
+        "style": false
       }
     ]
   ]

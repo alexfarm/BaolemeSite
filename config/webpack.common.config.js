@@ -70,15 +70,7 @@ module.exports = (argv) => {
                             }
                         },
                         {
-                            loader: 'less-loader',
-                            options: {
-                                lessOptions: {
-                                    modifyVars: {
-                                        'primary-color': '#f5222d'
-                                    },
-                                    javascriptEnabled: true
-                                }
-                            }
+                            loader: 'less-loader'
                         }
                     ]
                 },
@@ -89,7 +81,7 @@ module.exports = (argv) => {
                             loader: 'url-loader',
                             options: {
                                 limit: '5120',
-                                name: 'pic/[hash:8].[name].[ext]'
+                                name: '/pic/[hash:8].[name].[ext]'
                             }
                         }
                     ]

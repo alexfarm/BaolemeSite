@@ -1,5 +1,5 @@
 {
-  "name": "TRapp",
+  "name": "site",
   "version": "1.0.0",
   "description": "数字火焰杯",
   "author": "shenmaxg",
@@ -62,7 +62,6 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "antd": "^4.16.8",
     "antd-mobile": "^5.0.0-beta.18",
     "antd-mobile-icons": "^0.2.2",
     "axios": "^0.23.0",
