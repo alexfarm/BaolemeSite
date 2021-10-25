@@ -1,16 +1,18 @@
-import React, { useContext, useEffect } from 'react';
-import { Search, Space, Button } from 'antd-mobile';
+import React, { useRef, useEffect } from 'react';
+import { Search, Space, Button,Image } from 'antd-mobile';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';
-import { AppContext } from '../../store';
+import { DownFill } from 'antd-mobile-icons';
+import { SearchRef } from 'antd-mobile/es/components/search';
 import Banner from '../banner';
-import List from '../list';
+import iconPng from './images/icon.png';
+import moneyPng from './images/money.png';
 import styles from './Main.less';
 
+
 const Main: React.FC = () => {
-    const { shopStore } = useContext(AppContext);
     const history = useHistory();
-    const { list } = shopStore;
+    const searchRef = useRef<SearchRef>(null)
 
     useEffect(() => {
         console.log('main page init');
@@ -19,30 +21,31 @@ const Main: React.FC = () => {
     return (
         <Space direction="vertical" block style={{ '--gap': '12px' }}>
             <div
-                className={styles.search}
-                onClick={() => {
-                    history.push('/search');
-                }}
+                className={styles.header}
             >
-                <Search
-                    placeholder="请输入内容"
-                    value=""
-                    onFocus={() => {
+                <div style={{fontSize: 16, marginRight: 12}}>上海 <DownFill fontSize={12}/></div>
+                <div
+                    className={styles.search}
+                    onClick={() => {
                         history.push('/search');
                     }}
-                />
-                <div className={styles.button}>
-                    <Button
-                        style={{ '--border-radius': '8px' }}
-                        size="mini"
-                        color="primary"
-                    >
-                        搜索
-                    </Button>
+                >
+                    <Search
+                        ref={searchRef}
+                        placeholder="请输入您感兴趣的内容"
+                        value=""
+                        onFocus={() => {
+                            history.push('/search');
+                        }}
+                        style={{
+                            '--border-radius': '100px'
+                        }}
+                    />
                 </div>
             </div>
+            <Image src={iconPng} />
             <Banner />
-            <List list={list} />
+            <Image src={moneyPng} />
         </Space>
     );
 };

@@ -2,6 +2,9 @@
     position: relative;
     display: flex;
     align-items: center;
+    display: flex;
+    line-height: 40px;
+    height: 45px;
     justify-content: space-between;
 }
 
@@ -10,13 +13,18 @@
     flex-grow: 1;
 }
 
-.button {
-    position: absolute;
-    right: 6px;
-    top:4px;
+.hotSearch {
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 18px;
 }
 
-.hotSearch {
-    margin-top: 20px;
-    font-size: 14px;
+.null-result {
+    padding: 12px;
+    font-size: 16px;
+    span {
+        padding-left: 2px;
+        color: #ED5349;
+        font-weight: bold;
+    }   
 }

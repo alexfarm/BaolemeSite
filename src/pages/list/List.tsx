@@ -1,11 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Image, Card, Rate } from 'antd-mobile';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';
+import { EnvironmentOutline } from 'antd-mobile-icons';
 import styles from './List.less';
 import { IShop } from '../../store/Shop';
 
-interface Iprops{
+interface Iprops{ 
     list : IShop[]
 }
 
@@ -27,15 +28,16 @@ const MList: React.FC<Iprops> = (prosp) => {
                         className={styles.card}
                         bodyClassName={styles.cardBody}
                         onClick={() => {
-                            history.push('detail/1');
+                            history.push(`detail/${item.id}`);
                         }}
                     >
                         <Image
                             style={{ borderRadius: 8 }}
                             src={item?.img}
-                            width={66}
-                            height={66}
-                            fit="fill"
+                            className={styles.image}
+                            width={70}
+                            height={70}
+                            fit="cover"
                         />
                         <div className={styles.content}>
                             <div className={styles.header}>
@@ -49,7 +51,13 @@ const MList: React.FC<Iprops> = (prosp) => {
                                 </div>
                             </div>
                             <div className={styles.categray}>
-                                {item.tag}
+                                <EnvironmentOutline
+                                    style={{
+                                        marginRight: 5,
+                                        fontSize: 12,
+                                    }}
+                                />
+                                <div className={styles.site}>{item.site}</div>
                             </div>
                         </div>
                     </Card>

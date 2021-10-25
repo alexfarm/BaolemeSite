@@ -3,11 +3,9 @@ const {
 } = ENV_CONFIG;
 
 const API: any = {
-    AD_ADD: 'ad/all',
-    SHOP_LIST_ALL: 'shop/all/',
-    SHOP_SEARCH: 'shop/seach',
-    SHOP_GET_BY_ID: 'shop/getById',
-    AD_LIST_ALL: 'advertisement/all/'
+    SHOP_SEARCH: 'search.json',
+    AD_LIST_ALL: 'advertisement/all.json',
+    SHOP_DETAIL: 'merchant/detail.json'
 };
 
 Object.keys(API).forEach((apiName) => {

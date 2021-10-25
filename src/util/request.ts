@@ -1,20 +1,19 @@
 import axios, {
     AxiosRequestConfig, AxiosResponse
 } from 'axios';
-import { message } from 'antd';
 import qs from 'qs';
+import { v4 as uuid } from 'uuid';
 import { METHOD } from '../constant/http';
 
-message.config({
-    top: 80,
-    duration: 5,
-    maxCount: 3
-});
+const userFlag = uuid();
 
 export interface IResponse<T = any> {
     respCode: string;
     respMsg: string;
     respData?: T
+}
+axios.defaults.paramsSerializer = (params) => {
+    return qs.stringify(params, {arrayFormat: 'brackets'});
 }
 
 function responseHandler(response: AxiosResponse<IResponse & {url: string}>): any {
@@ -52,12 +51,14 @@ function request<T>(
 
 export function get<T>(
     url: string,
-    setLoading?: (loading: boolean) => void,
-    params?: AxiosRequestConfig
+    params?: AxiosRequestConfig,
+    setLoading?: (loading: boolean) => void
 ): Promise<T> {
     return request<T>({
         method: METHOD.GET,
-        headers: {},
+        headers: {
+            'X-USER-FLAG': userFlag 
+        },
         url,
         ...params
     }, setLoading);

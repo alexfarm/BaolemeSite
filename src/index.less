@@ -1,19 +1,38 @@
 :global {
   // app容器，因为在html中定义，用global防止名称被hash
   #app {
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       display: flex;
       width: 100%;
       height: 100%;
   }
 
-  body {
-      background: #ecedee;
-  }
+  // body {
+  //     // background: #ecedee;
+  //     background-color: white;
+  //     width: 100%;
+  //     height: 100%;
+  //     margin: 0;
+  // }
+
+  html, body {
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", STHeiTi, sans-serif;
+    overflow-y: scroll;
+}
 
   // 全局scroll样式覆盖
   ::-webkit-scrollbar-thumb {
-      background-color: #e6e6e6;
+      // background-color: #e6e6e6;
+      background-color: white;
   }
 
   ::-webkit-scrollbar {
@@ -25,4 +44,12 @@
     padding: 2px 7px;
     font-size: 12px;
   }
+
+  .adm-input {
+    font-size: 15px !important;
+  }
+}
+
+:root {
+  --adm-color-primary: #ED5349;
 }

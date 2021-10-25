@@ -1,33 +1,35 @@
 import React, { useContext, useEffect } from 'react';
-import { Swiper, Toast } from 'antd-mobile';
+import { Swiper } from 'antd-mobile';
 import { observer } from 'mobx-react';
+import { toJS } from 'mobx';
+import cx from 'classnames';
 import { AppContext } from '../../store';
 import styles from './Banner.less';
 
-const colors = ['#ace0ff', '#bcffbd', '#e4fabd', '#ffcfac'];
-
 const Banner: React.FC = () => {
     const { adStore } = useContext(AppContext);
-    const { list } = adStore;
+    const { adList, getAll } = adStore;
 
     useEffect(() => {
-        // adStore.initSocket(window);
         console.log('ad page init');
+        getAll();
     }, [adStore]);
 
     return (
         <>
-            <Swiper>
+            <Swiper
+                style={{
+                    '--track-padding': ' 0 0 16px',
+                }}
+                indicatorProps={{
+                    '--active-dot-size': '10px',
+                }}
+            >
                 {
-                    list.map((ad: any, index: number) => (
+                    toJS(adList).map((ad: any, index: number) => (
                         <Swiper.Item key={index}>
                             <div
-                                className={styles.content}
-                                style={{ background: colors[index] }}
-                                onClick={() => {
-                                    Toast.show(`你点击了卡片 ${index + 1}`);
-                                }}
-                            >
+                                className={cx(styles.content, styles[`img_${ad.type}`])}                            >
                                 {ad.description}
                             </div>
                         </Swiper.Item>
